@@ -1,5 +1,7 @@
 import React from "react";
 
+import CollectionItem from "../collection-item/collection-item.component";
+
 import './collection-preview.styles.scss';
 
 const CollectionPreview = ({ title, items }) => (
@@ -9,8 +11,8 @@ const CollectionPreview = ({ title, items }) => (
             {
                 items
                 .filter((item, idx) => idx < 4)// make sure we only display the 1st 4 (0 to 3) items for each collection
-                .map((item) => (
-                    <div key={item.id}>{item.name}</div>
+                .map(({id, ...otherItemProps}) => (
+                    <CollectionItem key={id} { ...otherItemProps }/>
                 ))
             }
         </div>
