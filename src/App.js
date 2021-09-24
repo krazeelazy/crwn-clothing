@@ -32,7 +32,8 @@ class App extends React.Component {
                             ...snapShot.data() // need .data() to actually get the data from the snapshot object
                         }
                     });
-                    
+
+                    console.log(this.state);                    
                 });
             } else {// if userAuth is null (user signed out)
                 this.setState({ currentUser: userAuth });
