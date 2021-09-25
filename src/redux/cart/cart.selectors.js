@@ -6,6 +6,11 @@ export const selectCartItems = createSelector( // a memoized selector
     [selectCart], // an array of input selectors (just 1 here)
     cart => cart.cartItems // a function that returns the value we want out of the selector
 );
+
+export const selectCartHidden = createSelector(
+    [selectCart],
+    cart => cart.hidden
+);
     
 export const selectCartItemsCount = createSelector(
     [selectCartItems],
