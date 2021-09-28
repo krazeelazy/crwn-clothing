@@ -24,21 +24,21 @@ class App extends React.Component {
     componentDidMount() {
         const { setCurrentUser } = this.props; // get the setCurrentUser reducer action from the props (added to props in mapDispatchToProps)
 
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
+        // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        //     if (userAuth) {
+        //         const userRef = await createUserProfileDocument(userAuth);
                 
-                userRef.onSnapshot(snapShot => { // onSnapshot is similar to onStateChange, we're subscribing to the user ref and listening for any changes
-                    setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data() // need .data() to actually get the data from the snapshot object
-                    });                  
-                });
-            } else {// if userAuth is null (user signed out)
-                setCurrentUser(userAuth);
-            }
+        //         userRef.onSnapshot(snapShot => { // onSnapshot is similar to onStateChange, we're subscribing to the user ref and listening for any changes
+        //             setCurrentUser({
+        //                 id: snapShot.id,
+        //                 ...snapShot.data() // need .data() to actually get the data from the snapshot object
+        //             });                  
+        //         });
+        //     } else {// if userAuth is null (user signed out)
+        //         setCurrentUser(userAuth);
+        //     }
             
-        });
+        // });
     }
     
     componentWillUnmount() {
