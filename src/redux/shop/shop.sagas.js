@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 import {
     firestore,
@@ -17,7 +17,7 @@ export function* fetchCollectionsAsync() {
         yield console.log('I am fired');
         const collectionRef = firestore.collection('collections');
         const snapshot = yield collectionRef.get();
-        // call is the effect that involes the convertCollectionsSnapshotMap method
+        // call is the effect that involves the convertCollectionsSnapshotMap method
         // same as doing const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
         // but call allows us to yield and defer control to the middleware
         const collectionsMap = yield call( 
@@ -35,7 +35,7 @@ export function* fetchCollectionsAsync() {
 export function* fetchCollectionsStart() {
     // creates a non-blocking call so the app can continue running other sagas or whatever the user wants to do. 
     // the rest of the system won't have to wait for this to get data back to continue.
-    yield takeEvery(
+    yield takeLatest(
         ShopActionTypes.FETCH_COLLECTIONS_START,
         fetchCollectionsAsync
         );
