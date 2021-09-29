@@ -14,7 +14,6 @@ import ShopActionTypes from './shop.types';
 
 export function* fetchCollectionsAsync() {
     try{
-        yield console.log('I am fired');
         const collectionRef = firestore.collection('collections');
         const snapshot = yield collectionRef.get();
         // call is the effect that involves the convertCollectionsSnapshotMap method
