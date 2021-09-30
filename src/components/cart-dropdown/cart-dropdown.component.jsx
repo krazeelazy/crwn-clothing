@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
@@ -13,8 +13,9 @@ import {
     CartItemsContainer
 } from './cart-dropdown.styles';
 
-const CartDropdown = ({ history }) => {
+const CartDropdown = () => {
     const cartItems = useSelector(selectCartItems);
+    const history = useHistory();
     const dispatch = useDispatch();
 
     return (
@@ -43,4 +44,4 @@ const CartDropdown = ({ history }) => {
     );
 };
         
-export default withRouter(CartDropdown);
+export default CartDropdown;

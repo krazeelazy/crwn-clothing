@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
 
@@ -11,8 +12,9 @@ import {
     CollectionItemsContainer
 } from './collection.styles';
 
-const CollectionPage = ({ match }) => {
-    const collection = useSelector(selectCollection(match.params.collectionId));
+const CollectionPage = () => {
+    const { collectionId } = useParams();
+    const collection = useSelector(selectCollection(collectionId));
     const { title, items } = collection;
 
     return (
